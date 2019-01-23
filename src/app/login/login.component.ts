@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, NgModule} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 import {AuthLoginService} from '../service/auth-login.service';
-import {AlertService} from '../service/auth-register.service';
+import {AlertService} from '../service/alert.service';
 
 @Component({
   moduleId: module.id,
