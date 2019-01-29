@@ -9,9 +9,10 @@ import {User} from '../_models/user';
 @Injectable()
 export class AuthLoginService {
 public token: string;
+private emptyUser = new User('', '', '');
 private LoggedIn = new BehaviorSubject<boolean> (false);
 currentLoggedIn = this.LoggedIn.asObservable();
-private currentUser = new BehaviorSubject<User>(null);
+private currentUser = new BehaviorSubject<User>(this.emptyUser);
 currentUserObserver = this.currentUser.asObservable();
 
 constructor(private http: HttpClient) { }
@@ -63,7 +64,7 @@ constructor(private http: HttpClient) { }
     localStorage.removeItem('currentUser');
     localStorage.removeItem('token');
     this.changeLoginStatus(false);
-    this.changeCurrentUserStatus(null);
+    this.changeCurrentUserStatus(this.emptyUser);
   }
 
   changeLoginStatus(nextLoginStatus: boolean) {

@@ -1,6 +1,51 @@
 <header class="bar">
+
   <mat-toolbar color="primary">
     <button mat-button [routerLink]="['']" routerLinkActive="active">Home</button>
     <button mat-button [mat-menu-trigger-for]="aboutMenu">About<i class="material-icons">&#xE5C5;</i></button>
   </mat-toolbar>
+
+  <!-- About Menu -->
+  <mat-menu #aboutMenu="matMenu" mat-offset="0 2">
+    <button mat-menu-item [routerLink]="['/wheretofindus']" routerLinkActive="active">Where to find us</button>
+    <button mat-menu-item [routerLink]="['/aboutus']" routerLinkActive="active">About Us</button>
+    <button mat-menu-item [routerLink]="['/contactus']" routerLinkActive="active">Contact Us</button>
+  </mat-menu>
+
+  <!-- Create Menu -->
+  <mat-menu #createMenu="matMenu" mat-offset="0 2">
+    <button mat-menu-item [routerLink]="['/createreview']" routerLinkActive="active">Add New Review</button>
+    <button mat-menu-item [routerLink]="['/editreviews']" routerLinkActive="active">Edit Reviews</button>
+  </mat-menu>
+
+  <!-- User Menu -->
+  <mat-menu xPosition="after" #userMenu="matMenu" mat-offset="0 2">
+    <button mat-menu-item [routerLink]="['/myprofile']" routerLinkActive="active">Edit Profile</button>
+    <button *ngIf="currentUser.role === 'editor' || currentUser.role === 'writer'" mat-menu-item routerLink="['/myReviews]" routerLinkActive="active">My Reviews</button>
+    <!-- different routerLink syntax -->
+    <button mat-menu-item routerLink="['/logout]">Log Out</button>
+  </mat-menu>
+
+  <!-- Admin Nemu -->
+  <mat-menu #addMenu="matMenu" mat-offset="0 2">
+    <button mat-menu-item *ngIf="currentUser.role == 'editor'" [routerLink]="['/admindashboard']" routerLinkActive="active">Admin Dashboard</button>
+    <button mat-menu-item *ngIf="currentUser.role == 'editor'" [routerLink]="['/createadmin']" routerLinkActive="active">Create Admin</button>
+    <button mat-menu-item *ngIf="currentUser.role == 'editor'" [routerLink]="['/usermanager']" routerLinkActive="active">User Management</button>
+  </mat-menu>
 </header>
+
+<div *ngIf = "LoggedIn">
+  <button *ngIf="currentUser.role == 'creator' || currentUser.role == 'editor'" mat-button [mat-menu-trigger-for]="createMenu">
+    Create
+    <i class="material-icons">&#xE5C5;</i>
+  </button>
+  <button mat-button [mat-button-trigger-for]="userMenu">
+    {{currentUser.email}}
+    <i class="material-icons">&#xE5C5;</i>
+  </button>
+
+  <button *ngIf="currentUser.role == 'editor'" mat-button [mat-menu-trigger-for]="addMenu">
+    Administration
+    <i class="material-icons">&#xE5C5;</i>
+  </button>
+</div>
