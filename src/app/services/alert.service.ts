@@ -22,16 +22,20 @@ export class AlertService {
       }
     });
   }
-    public success(message: string, keepAfterNavigationChange = false): void {
-    this.keepAfterNavigationChange = this.keepAfterNavigationChange;
-    this.subject.next({type: 'success', text: message});
-  }
-    public error(message: string, keepAfterNavigationChange = false): void {
+
+  public success(message: string, keepAfterNavigationChange = false): void {
     this.keepAfterNavigationChange = keepAfterNavigationChange;
-    this.subject.next({type: 'error', text: message});
+    this.subject.next({ type: 'success', text: message });
   }
-    getMessage(): Observable<any> {
+
+  public error(message: string, keepAfterNavigationChange = false): void {
+    this.keepAfterNavigationChange = keepAfterNavigationChange;
+    this.subject.next({ type: 'error', text: message });
+  }
+
+  getMessage(): Observable<any> {
     return this.subject.asObservable();
   }
 
 }
+

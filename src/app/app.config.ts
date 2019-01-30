@@ -1,4 +1,4 @@
-module.exports = {
-  'secret': 'nodeauthsecret',
-  'database': 'mongodb://localhost/filmreviews'
-};// App config
+export const AppConfig = {
+  apiUrl: 'http://localhost:3000',
+  secret: 'nodeauthsecret'
+};

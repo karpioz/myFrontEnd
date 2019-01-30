@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthRegisterService, AlertService} from '../service/auth-register.service';
+import {Component, OnInit } from '@angular/core';
+import {AuthRegisterService} from '../service/auth-register.service';
 import {Router} from '@angular/router';
-
+import {AlertService} from '../services/alert.service';
 import {ValidationMessage} from '../_models/validationMessage';
 
 @Component({
@@ -9,41 +9,37 @@ import {ValidationMessage} from '../_models/validationMessage';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-
 export class RegisterComponent implements OnInit {
   model: any = {};
   loading = false;
 
-  constructor(private registerService: AuthRegisterService,
-              private router: Router,
-              private alertService: AlertService) {}
-    ngOnInit(){
-    }
+  constructor(private  registerService: AuthRegisterService, private router: Router, private alertService: AlertService) { }
 
-    register() {
+  ngOnInit() {
+  }
+
+  register() {
     this.loading = true;
     this.registerService.create(this.model)
       .subscribe(
-        data => {
-          const returnedMessage = <ValidationMessage> data;
+        data => {  const returnedMessage = data as ValidationMessage;
 
-          if(returnedMessage.success){
+          if (returnedMessage.success) {
+
+            console.log('Registration worked');
             this.alertService.success('Registration successful', true);
+            // noinspection JSIgnoredPromiseFromCall
             this.router.navigate(['/login']);
           } else {
+            console.log('Error from registration : ' + returnedMessage.msg);
             this.alertService.error(returnedMessage.msg);
           }
-
-          console.log(data);
-
-          this.alertService.success('Registration successful', true);
-          this.router.navigate(['/login']);
 
         },
         error => {
           this.alertService.error(error);
           this.loading = false;
-        });
+        })    ;
   }
-}
 
+}
