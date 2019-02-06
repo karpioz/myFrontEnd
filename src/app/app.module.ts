@@ -10,7 +10,7 @@ import { LoginComponent } from './auth/login/login.component';
 // import our services
 import {AuthLoginService} from './service/auth-login.service';
 import {AlertService} from './service/alert.service';
-import { AuthRegisterService} from './service/auth-register.service';
+import {AuthRegisterService} from './service/auth-register.service';
 import {AppRouting} from './app.routing';
 import {AuthGuard} from './guards/auth.guard';
 import {HomeComponent} from './home/home.component';

@@ -26,6 +26,7 @@
     "@angular/router": "^5.0.0",
     "@schematics/angular": "^0.1.16",
     "core-js": "^2.4.1",
+    "jsonwebtoken": "^8.1.1",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },
