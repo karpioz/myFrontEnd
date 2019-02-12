@@ -19,8 +19,14 @@ import {AlertComponent} from './directives/alert/alert.component';
 import {ErrorInterceptorProvider} from './services/helper/error.interceptor';
 import {JwtInterceptorProvider} from './services/helper/jwt.interceptor';
 import { MenuComponent } from './services/menu/menu.component';
+import { ReviewService} from './service/review.service';
 
-import {MatMenuModule, MatCommonModule, MatButtonModule, MatCardModule, MatToolbarModule, MatIconModule} from '@angular/material';
+import {
+  MatMenuModule, MatCommonModule, MatButtonModule, MatCardModule, MatToolbarModule, MatIconModule,
+  MatFormFieldModule, MatAutocompleteModule, MatDatepickerModule, MatInputModule, MatSidenavModule, MatCheckboxModule,
+  MatGridListModule, MatDialogModule, MatLineModule, MatChipsModule, MatExpansionModule, MatProgressBarModule,
+  MatRadioModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CreateReviewComponent } from './create-review/create-review.component';
 import { EditReviewComponent } from './edit-review/edit-review.component';
@@ -32,6 +38,10 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { WhereWeAreComponent } from './where-we-are/where-we-are.component';
 
+// import for Ngx editor to work
+import {NgxEditorModule} from 'ngx-editor';
+import {AngularFontAwesomeComponent, AngularFontAwesomeModule} from 'angular-font-awesome';
+import { ViewReviewsComponent } from './view-reviews/view-reviews.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +59,8 @@ import { WhereWeAreComponent } from './where-we-are/where-we-are.component';
     UserManagementComponent,
     AboutUsComponent,
     ContactUsComponent,
-    WhereWeAreComponent
+    WhereWeAreComponent,
+    ViewReviewsComponent
   ],
   imports: [
     BrowserModule,
@@ -62,13 +73,29 @@ import { WhereWeAreComponent } from './where-we-are/where-we-are.component';
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatSidenavModule,
+    MatAutocompleteModule,
+    MatCheckboxModule,
+    MatGridListModule,
+    MatDialogModule,
+    MatLineModule,
+    MatChipsModule,
+    MatExpansionModule,
+    MatProgressBarModule,
+    MatRadioModule,
     BrowserAnimationsModule,
+    NgxEditorModule,
+    AngularFontAwesomeModule
   ],
   // our service providers
   providers: [AuthRegisterService,
               AuthLoginService,
               AuthGuard,
               AlertService,
+              ReviewService,
               JwtInterceptorProvider,
               ErrorInterceptorProvider
   ],
