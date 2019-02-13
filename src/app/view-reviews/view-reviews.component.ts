@@ -16,7 +16,8 @@ export class ViewReviewsComponent implements OnInit {
   allReviews: Array<Review>;
   currentUser: User;
   constructor(private reviewService: ReviewService,
-              private authService: AuthLoginService) { }
+              private authService: AuthLoginService,
+              private router: Router) { }
 
   ngOnInit() {
     this.reviewService.getAllReviews()

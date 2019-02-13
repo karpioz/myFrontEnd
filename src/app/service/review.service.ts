@@ -31,4 +31,14 @@ export class ReviewService {
   delete(id: string) {
     return this.http.delete(`${AppConfig.apiUrl}/api/film` + id);
   }
+  getReviewByID(id: string): Observable<Review> {
+    try {
+      return this.http.get(`${AppConfig.apiUrl}/api/film` + id).map(res => res as Review);
+    } catch (error) {
+      console.log(error.msg);
+    }
+  }
+  updateFilm(review: Review) {
+    return this.http.put(`${AppConfig.apiUrl}/api/film` + review._id, review);
+  }
 }

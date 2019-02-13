@@ -47,6 +47,11 @@ const appRoutes: Routes = [
     data: {title: 'Edit Review'}
   },
   {
+    path: 'editreview/:id',
+    component: EditReviewComponent,
+    data: {title: 'Edit Review'}
+  },
+  {
     path: 'myreviews',
     component: MyReviewsComponent,
     data: {title: 'My Reviews'}
