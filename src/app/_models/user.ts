@@ -1,4 +1,3 @@
-
 export class User {
   _id: string;
   email: string;
@@ -11,14 +10,3 @@ export class User {
     this.role = role;
   }
 }
-
-
-/* Dave's code
-
-export class User {
-  _id: string;
-  email: string;
-  password: string;
-  role: string;
-}
-*/

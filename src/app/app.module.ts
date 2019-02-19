@@ -42,6 +42,7 @@ import { WhereWeAreComponent } from './where-we-are/where-we-are.component';
 import {NgxEditorModule} from 'ngx-editor';
 import {AngularFontAwesomeComponent, AngularFontAwesomeModule} from 'angular-font-awesome';
 import { ViewReviewsComponent } from './view-reviews/view-reviews.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { ViewReviewsComponent } from './view-reviews/view-reviews.component';
     AboutUsComponent,
     ContactUsComponent,
     WhereWeAreComponent,
-    ViewReviewsComponent
+    ViewReviewsComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -16,6 +16,7 @@ import {UserManagementComponent} from './user-management/user-management.compone
 import {AboutUsComponent} from './about-us/about-us.component';
 import {ContactUsComponent} from './contact-us/contact-us.component';
 import {WhereWeAreComponent} from './where-we-are/where-we-are.component';
+import {AdminDashboardComponent} from './admin-dashboard/admin-dashboard.component';
 
 const appRoutes: Routes = [
   {path: '',
@@ -85,7 +86,14 @@ const appRoutes: Routes = [
     path: 'wheretofindus',
     component: WhereWeAreComponent,
     data: {title: 'Where to find us'}
-}
+},
+  {path: 'admindashboard',  component: AdminDashboardComponent, data : {title : 'Where to find us'}
+
+  },
+  {path: 'film-details/: id',  component: AdminDashboardComponent, data : {title : 'Where to find us'}
+
+  }
+
 ];
 
 export const AppRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);

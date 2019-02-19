@@ -1,31 +1,22 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {AppConfig} from '../app.config';
 import * as jwt from 'jsonwebtoken';
-
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {User} from '../_models/user';
 
 @Injectable()
 export class AuthLoginService {
-public token: string;
-private emptyUser = new User('', '', '');
-//private emptyUser = new User();
-private LoggedIn = new BehaviorSubject<boolean> (false);
-currentLoggedIn = this.LoggedIn.asObservable();
-private currentUser = new BehaviorSubject<User>(this.emptyUser);
-currentUserObserver = this.currentUser.asObservable();
+  public token: string;
+  private emptyUser = new User('', '', '');
+  private LoggedIn = new BehaviorSubject<boolean> (false);
+  currentLoggedIn = this.LoggedIn.asObservable();
+  private currentUser = new BehaviorSubject<User>(this.emptyUser);
+  currentUserObserver = this.currentUser.asObservable();
 
-constructor(private http: HttpClient) { }
-
-  logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
-    localStorage.removeItem('token');
-    this.changeLoginStatus( false);
-    this.changeCurrentUserStatus(this.emptyUser);
-  }
+  constructor(private http: HttpClient) { }
 
   changeLoginStatus( nextLoginStatus: boolean ) {
     this.LoggedIn.next(nextLoginStatus);
@@ -37,29 +28,30 @@ constructor(private http: HttpClient) { }
   login(email: string, password: string) {
     return this.http.post <any>(AppConfig.apiUrl + '/api/signin', {email: email, password: password})
       .map(user => {
-
-          console.log('login has fired');
-
-          console.log(user);
-          // split  up  token
-          const parted = user.token.split(' ');
-          const currentUserReturned = jwt.decode(parted[1], AppConfig.secret);
-
-          console.log(currentUserReturned);
-          // login successful if there's a jwt token in the response
-          if (user) {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(currentUserReturned));
-            localStorage.setItem('token', JSON.stringify(user));
-            this.changeLoginStatus(true);
-            this.changeCurrentUserStatus(currentUserReturned);
-            console.log(currentUserReturned)  ;
-          }
-
-
-          return user;
+        console.log('Login has fired');
+        console.log(user);
+        // Split  up  token
+        const parted = user.token.split(' ');
+        const currentUserReturned = jwt.decode(parted[1], AppConfig.secret);
+        console.log(currentUserReturned);
+        // Login successful if there's a jwt token in the response
+        if (user) {
+          // Store user details and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem('currentUser', JSON.stringify(currentUserReturned));
+          localStorage.setItem('token', JSON.stringify(user));
+          this.changeLoginStatus(true);
+          this.changeCurrentUserStatus(currentUserReturned);
+          console.log(currentUserReturned)  ;
         }
-      );
+        return user;
+      });
   }
 
+  logout() {
+    // Remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('token');
+    this.changeLoginStatus( false);
+    this.changeCurrentUserStatus(this.emptyUser);
+  }
 }
