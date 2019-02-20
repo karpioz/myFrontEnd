@@ -25,7 +25,7 @@ import {
   MatMenuModule, MatCommonModule, MatButtonModule, MatCardModule, MatToolbarModule, MatIconModule,
   MatFormFieldModule, MatAutocompleteModule, MatDatepickerModule, MatInputModule, MatSidenavModule, MatCheckboxModule,
   MatGridListModule, MatDialogModule, MatLineModule, MatChipsModule, MatExpansionModule, MatProgressBarModule,
-  MatRadioModule
+  MatRadioModule, MatNativeDateModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CreateReviewComponent } from './create-review/create-review.component';
@@ -90,7 +90,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     MatRadioModule,
     BrowserAnimationsModule,
     NgxEditorModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    MatNativeDateModule
   ],
   // our service providers
   providers: [AuthRegisterService,

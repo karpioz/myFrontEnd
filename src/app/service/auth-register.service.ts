@@ -15,7 +15,7 @@ export class AuthRegisterService {
   create(user: User) {
     console.log(user);
     console.log(AppConfig.apiUrl);
-    return this.http.post(AppConfig.apiUrl + 'api/signup', user);
+    return this.http.post(AppConfig.apiUrl + '/api/signup', user);
   }
 
 }
