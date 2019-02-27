@@ -20,6 +20,7 @@ import {ErrorInterceptorProvider} from './services/helper/error.interceptor';
 import {JwtInterceptorProvider} from './services/helper/jwt.interceptor';
 import { MenuComponent } from './services/menu/menu.component';
 import { ReviewService} from './service/review.service';
+import { CommentService} from './service/comment.service';
 
 import {
   MatMenuModule, MatCommonModule, MatButtonModule, MatCardModule, MatToolbarModule, MatIconModule,
@@ -43,6 +44,7 @@ import {NgxEditorModule} from 'ngx-editor';
 import {AngularFontAwesomeComponent, AngularFontAwesomeModule} from 'angular-font-awesome';
 import { ViewReviewsComponent } from './view-reviews/view-reviews.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     ContactUsComponent,
     WhereWeAreComponent,
     ViewReviewsComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
