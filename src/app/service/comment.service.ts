@@ -22,7 +22,7 @@ export class CommentService {
 
   getCommentsByFilmID(filmID: string): Observable<Array<Comment>> {
     try {
-      return this.http.get(`${AppConfig.apiUrl}/api/comment` + filmID).map(res => res as Comment);
+      return this.http.get(`${AppConfig.apiUrl}/api/comment` + filmID).map(res => res as Array<Comment>);
     } catch (error) {
       console.log(error.msg);
     }

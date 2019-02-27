@@ -102,6 +102,7 @@ import { CommentComponent } from './comment/comment.component';
               AuthGuard,
               AlertService,
               ReviewService,
+              CommentService,
               JwtInterceptorProvider,
               ErrorInterceptorProvider
   ],
