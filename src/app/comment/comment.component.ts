@@ -4,6 +4,7 @@ import { Comment} from '../_models/comment';
 import {Router} from '@angular/router';
 import {User} from '../_models/user';
 import { AuthLoginService} from '../service/auth-login.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-comment',
@@ -15,6 +16,7 @@ export class CommentComponent implements OnInit {
   @Input() filmID: string;
   allComments: Array<Comment>;
   currentUser: User;
+  username: Observable<string>;
   constructor(private commentService: CommentService,
               private authService: AuthLoginService,
               private router: Router) { }

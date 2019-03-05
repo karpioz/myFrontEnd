@@ -9,7 +9,7 @@
 
       <mat-card>
 
-        <img md-card-image [src]="review.img" alt="Film Image" />
+        <img md-card-image src="{{review.img}}" alt="Film Image" width="80" height="100"/>
 
         <mat-card-title>
           Director:
@@ -38,6 +38,7 @@
             Comments:
           </mat-card-title>
           <app-comment filmID="{{review._id}}" ></app-comment>
+          <app-add-comment filmID="{{review._id}}"></app-add-comment>
 
         </mat-card-content>
       </mat-card>

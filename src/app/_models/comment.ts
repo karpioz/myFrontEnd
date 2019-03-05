@@ -3,4 +3,5 @@ export class Comment {
   comment: string;
   userID: string;
   filmID: string;
+  userName: string;
 }

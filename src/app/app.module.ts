@@ -45,6 +45,7 @@ import {AngularFontAwesomeComponent, AngularFontAwesomeModule} from 'angular-fon
 import { ViewReviewsComponent } from './view-reviews/view-reviews.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { CommentComponent } from './comment/comment.component';
+import { AddCommentComponent } from './add-comment/add-comment.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { CommentComponent } from './comment/comment.component';
     WhereWeAreComponent,
     ViewReviewsComponent,
     AdminDashboardComponent,
-    CommentComponent
+    CommentComponent,
+    AddCommentComponent
   ],
   imports: [
     BrowserModule,

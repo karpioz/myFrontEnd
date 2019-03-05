@@ -1,0 +1,11 @@
+<h4>Enter your comment here:</h4>
+<div class="input-area">
+  <form (submit)="sendComment()" name="commentForm" #commentForm="ngForm">
+    <div >
+      <textarea class="dark" name="comment" id="comment" rows="5" placeholder="Your comment" [(ngModel)]="newComment.comment"></textarea>
+    </div>
+    <button>
+      <span data-feather="send">Add Comment</span>
+    </button>
+  </form>
+</div>
